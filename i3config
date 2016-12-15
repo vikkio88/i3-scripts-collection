@@ -116,8 +116,20 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# Monitor switch
-bindsym $mod+Shift+m exec monitor_sw
+# Monitor switch mode
+mode "Monitor mode: (1) Internal (2) External (C)lone (E)xtended" {
+        bindsym 1 exec monitor_sw INTERNAL
+        bindsym 2 exec monitor_sw EXTERNAL
+        bindsym c exec monitor_sw CLONES
+        bindsym e exec monitor_sw EXTENDED
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+m mode "Monitor mode: (1) Internal (2) External (C)lone (E)xtended"
+
+# bindsym $mod+Shift+m exec monitor_sw
 
 # Custom launcher
 bindsym $mod+space exec synapse
@@ -164,8 +176,6 @@ mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
 bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # resize window (you can also use the mouse for that)
