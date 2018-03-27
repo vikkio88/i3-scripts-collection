@@ -134,7 +134,7 @@ bindsym $mod+Shift+m mode "Monitor mode: (1) Internal (2) External (C)lone (E)xt
 # Custom launcher
 bindsym $mod+space exec synapse
 bindsym $mod+Shift+w exec google-chrome
-bindsym $mod+Shift+f exec nautilus --no-desktop
+bindsym $mod+Shift+f exec pcmanfm
 
 # Lock
 bindsym $mod+Escape exec ~/.i3/i3lock-fancy/lock
@@ -144,16 +144,17 @@ bindsym $mod+Shift+i exec setxkbmap it
 bindsym $mod+Shift+g exec setxkbmap gb
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
 
-# scrot & gthumb - root
+# Screenshot scrot & gthumb - root
 bindsym Print exec scrot -e 'mv $f /tmp/ && gthumb /tmp/$f'
+#bindsym Print exec "scrot -s -e 'mv $f /tmp/ && gthumb /tmp/$f'"
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
