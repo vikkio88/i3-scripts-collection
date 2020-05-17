@@ -1,0 +1,9 @@
+#!/bin/bash
+
+CURRENT_LAYOUT=`setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'`
+
+if [ "$CURRENT_LAYOUT" = "gb" ]; then
+    setxkbmap -layout it
+else
+    setxkbmap -layout gb
+fi
